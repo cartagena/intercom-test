@@ -9,7 +9,7 @@ import static com.github.cartagena.intercom.invite.Coordinates.*;
 
 @Value
 @Builder(builderMethodName = "newCustomer")
-public class Customer {
+public class Customer implements Comparable<Customer> {
 
     String userId;
     String name;
@@ -23,7 +23,9 @@ public class Customer {
                 .build();
     }
 
-    public static Comparator<Customer> getIdSorter() {
-        return (c1, c2) -> c1.getUserId().compareTo(c2.getUserId());
+    @Override
+    public int compareTo(Customer o) {
+        return userId.compareTo(o.getUserId());
     }
+
 }

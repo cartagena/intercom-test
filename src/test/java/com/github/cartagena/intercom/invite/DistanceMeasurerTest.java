@@ -25,7 +25,7 @@ public class DistanceMeasurerTest {
         double distance = measurer.distanceBetween(x, y);
 
         assertThat(distance)
-                .isBetween(111500D, 112000D);
+                .isBetween(111.5, 1120.0);
     }
 
     @Test

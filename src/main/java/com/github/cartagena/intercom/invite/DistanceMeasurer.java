@@ -7,7 +7,7 @@ import static java.util.Objects.isNull;
 
 public class DistanceMeasurer {
 
-    private static final double EARTH_RADIOUS = 6371000.0;
+    private static final double EARTH_RADIOUS = 6371.0;
 
     public double distanceBetween(Coordinates x, Coordinates y) {
         if( (isNull(x) || !x.isValid()) || (isNull(y) || !y.isValid())  ) {

@@ -1,2 +1,5 @@
-{"latitude": "0", "user_id": 1, "name": "John", "longitude": "0"}
-{"latitude": "0", "user_id": 2, "name": "Andrew", "longitude": "0"}
+{ "user_id": 1, "name": "Wicklow", "latitude": "52.9862", "longitude": "-6.3673"}
+{ "user_id": 2, "name": "Athlone", "latitude": "53.4239", "longitude": "-7.9407"}
+{ "user_id": 3, "name": "Galway", "latitude": "53.2707", "longitude": "-9.0568"}
+{ "user_id": 4, "name": "Cork", "latitude": "51.8969", "longitude": "-8.4863"}
+{ "user_id": 5, "name": "Kildare", "latitude": "53.2120", "longitude": "-6.8195"}
