@@ -5,6 +5,8 @@ import lombok.Value;
 
 import java.util.Comparator;
 
+import static com.github.cartagena.intercom.invite.Coordinates.*;
+
 @Value
 @Builder(builderMethodName = "newCustomer")
 public class Customer {
@@ -14,7 +16,14 @@ public class Customer {
     double latitude;
     double longitude;
 
-    public static Comparator<? super Customer> getIdSorter() {
-        return null;
+    public Coordinates getLocation() {
+        return newCoordinates()
+                .latitude(latitude)
+                .longitude(longitude)
+                .build();
+    }
+
+    public static Comparator<Customer> getIdSorter() {
+        return (c1, c2) -> c1.getUserId().compareTo(c2.getUserId());
     }
 }
