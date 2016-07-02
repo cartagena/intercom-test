@@ -8,6 +8,9 @@ repositories {
 }
 
 dependencies {
+    compile('com.google.code.gson:gson:2.7')
+    compile('org.projectlombok:lombok:1.16.8')
+
     testCompile('junit:junit:4.12')
     testCompile('org.assertj:assertj-core:3.2.0')
 }
