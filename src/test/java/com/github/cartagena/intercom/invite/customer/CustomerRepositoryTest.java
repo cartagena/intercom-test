@@ -1,4 +1,4 @@
-package com.github.cartagena.intercom.invite;
+package com.github.cartagena.intercom.invite.customer;
 
 import org.junit.Test;
 
@@ -9,7 +9,7 @@ import java.nio.file.Paths;
 import java.util.Arrays;
 import java.util.List;
 
-import static com.github.cartagena.intercom.invite.Customer.newCustomer;
+import static com.github.cartagena.intercom.invite.customer.Customer.newCustomer;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.Assert.fail;
 
@@ -25,14 +25,14 @@ public class CustomerRepositoryTest {
         CustomerRepository repository = new CustomerRepository(tmpFile);
 
         Customer customer1 = newCustomer()
-                .userId("1")
+                .userId(1)
                 .name("John")
                 .latitude(0)
                 .longitude(0)
                 .build();
 
         Customer customer2 = newCustomer()
-                .userId("2")
+                .userId(2)
                 .name("Andrew")
                 .latitude(0)
                 .longitude(0)
@@ -109,14 +109,14 @@ public class CustomerRepositoryTest {
         CustomerRepository repository = new CustomerRepository(tmpFile);
 
         Customer customer1 = newCustomer()
-                .userId("1")
+                .userId(1)
                 .name("John")
                 .latitude(0)
                 .longitude(0)
                 .build();
 
         Customer customer2 = newCustomer()
-                .userId("2")
+                .userId(2)
                 .name("Andrew")
                 .latitude(0)
                 .longitude(0)
@@ -136,7 +136,7 @@ public class CustomerRepositoryTest {
         CustomerRepository repository = new CustomerRepository(tmpFile);
 
         Customer customer1 = newCustomer()
-                .userId("1")
+                .userId(1)
                 .name("John")
                 .latitude(0)
                 .longitude(0)

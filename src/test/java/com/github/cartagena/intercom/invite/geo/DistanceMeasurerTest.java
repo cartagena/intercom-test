@@ -1,8 +1,8 @@
-package com.github.cartagena.intercom.invite;
+package com.github.cartagena.intercom.invite.geo;
 
 import org.junit.Test;
 
-import static com.github.cartagena.intercom.invite.Coordinates.newCoordinates;
+import static com.github.cartagena.intercom.invite.geo.Coordinates.newCoordinates;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Fail.fail;
 

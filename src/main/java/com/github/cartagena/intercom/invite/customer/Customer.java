@@ -1,17 +1,16 @@
-package com.github.cartagena.intercom.invite;
+package com.github.cartagena.intercom.invite.customer;
 
+import com.github.cartagena.intercom.invite.geo.Coordinates;
 import lombok.Builder;
 import lombok.Value;
 
-import java.util.Comparator;
-
-import static com.github.cartagena.intercom.invite.Coordinates.*;
+import static com.github.cartagena.intercom.invite.geo.Coordinates.newCoordinates;
 
 @Value
 @Builder(builderMethodName = "newCustomer")
 public class Customer implements Comparable<Customer> {
 
-    String userId;
+    int userId;
     String name;
     double latitude;
     double longitude;
@@ -25,7 +24,7 @@ public class Customer implements Comparable<Customer> {
 
     @Override
     public int compareTo(Customer o) {
-        return userId.compareTo(o.getUserId());
+        return userId - o.getUserId();
     }
 
 }

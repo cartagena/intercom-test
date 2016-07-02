@@ -1,6 +1,4 @@
-package com.github.cartagena.intercom.invite;
-
-import com.google.gson.JsonSyntaxException;
+package com.github.cartagena.intercom.invite.customer;
 
 public class InvalidCustomersFileException extends RuntimeException {
 

@@ -1,4 +1,4 @@
-package com.github.cartagena.intercom.invite;
+package com.github.cartagena.intercom.invite.geo;
 
 
 import lombok.Builder;

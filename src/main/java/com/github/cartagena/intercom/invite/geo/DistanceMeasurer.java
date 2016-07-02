@@ -1,6 +1,4 @@
-package com.github.cartagena.intercom.invite;
-
-import java.util.Objects;
+package com.github.cartagena.intercom.invite.geo;
 
 import static java.lang.Math.*;
 import static java.util.Objects.isNull;

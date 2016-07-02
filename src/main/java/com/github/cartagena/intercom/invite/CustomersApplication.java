@@ -1,11 +1,17 @@
 package com.github.cartagena.intercom.invite;
 
+import com.github.cartagena.intercom.invite.customer.CustomerFormatter;
+import com.github.cartagena.intercom.invite.customer.CustomerRepository;
+import com.github.cartagena.intercom.invite.customer.NearbyCustomerFilter;
+import com.github.cartagena.intercom.invite.geo.Coordinates;
+import com.github.cartagena.intercom.invite.geo.DistanceMeasurer;
+
 import java.io.PrintStream;
 import java.nio.file.Paths;
-import java.util.function.Function;
-import java.util.function.Predicate;
+import java.util.Properties;
 
-import static java.lang.String.format;
+import static com.github.cartagena.intercom.invite.ApplicationConfiguration.newApplicationConfiguration;
+import static com.github.cartagena.intercom.invite.geo.Coordinates.newCoordinates;
 
 public class CustomersApplication {
 
@@ -24,20 +30,48 @@ public class CustomersApplication {
     }
 
     public void searchAndPrintNearbyCustomers() {
+        NearbyCustomerFilter nearby = new NearbyCustomerFilter(config.getOfficeLocation(), config.getMaxDistance());
+        CustomerFormatter formatter = new CustomerFormatter();
+
         repository.readAllCustomers()
                 .stream()
-                .filter(nearby())
+                .filter(nearby)
                 .sorted()
-                .map(asString())
+                .map(formatter)
                 .forEach(output::println);
     }
 
-    private Predicate<Customer> nearby() {
-        return c -> measurer.distanceBetween(config.getOfficeLocation(), c.getLocation()) <= config.getMinDistance();
+    public static void main(String... args) {
+        CustomersApplication app = new CustomersApplication(loadConfiguration(), System.out);
+        app.searchAndPrintNearbyCustomers();
     }
 
-    private Function<Customer, String> asString() {
-        return c -> format("%s %s", c.getName(), c.getUserId());
-    }
+    private static ApplicationConfiguration loadConfiguration() {
+        try {
+            String defaultCustomersFile = ApplicationConfiguration.class.getResource("/customers.json").getFile();
 
+            Properties properties = new Properties();
+            properties.load(ApplicationConfiguration.class.getResourceAsStream("/config.properties"));
+
+            double minDistance = Double.valueOf(properties.getProperty("min.distance"));
+
+            double officeLat = Double.valueOf(properties.getProperty("office.lat"));
+            double officeLng = Double.valueOf(properties.getProperty("office.lng"));
+
+            Coordinates office = newCoordinates()
+                    .latitude(officeLat)
+                    .longitude(officeLng)
+                    .build();
+
+            return newApplicationConfiguration()
+                    .maxDistance(minDistance)
+                    .customersFile(properties.getProperty("customers.file", defaultCustomersFile))
+                    .officeLocation(office)
+                    .build()
+                    .validate();
+
+        } catch (Exception e) {
+            throw new IllegalArgumentException("Configuration file missing arguments.", e);
+        }
+    }
 }

@@ -1,9 +1,8 @@
 package com.github.cartagena.intercom.invite;
 
+import com.github.cartagena.intercom.invite.geo.Coordinates;
 import lombok.Builder;
 import lombok.Value;
-
-import java.util.Objects;
 
 import static java.util.Objects.isNull;
 
@@ -12,11 +11,11 @@ import static java.util.Objects.isNull;
 public class ApplicationConfiguration {
 
     String customersFile;
-    double minDistance;
+    double maxDistance;
     Coordinates officeLocation;
 
     public ApplicationConfiguration validate() {
-        if(isNull(customersFile) || customersFile.isEmpty() || minDistance < 0 ||
+        if(isNull(customersFile) || customersFile.isEmpty() || maxDistance < 0 ||
                 isNull(officeLocation) || !officeLocation.isValid()) {
 
             throw new IllegalArgumentException("Invalid configuration arguments.");

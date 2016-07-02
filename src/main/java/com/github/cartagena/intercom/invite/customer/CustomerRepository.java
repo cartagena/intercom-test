@@ -1,4 +1,4 @@
-package com.github.cartagena.intercom.invite;
+package com.github.cartagena.intercom.invite.customer;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;

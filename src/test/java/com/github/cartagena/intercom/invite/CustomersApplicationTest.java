@@ -1,13 +1,14 @@
 package com.github.cartagena.intercom.invite;
 
+import com.github.cartagena.intercom.invite.geo.Coordinates;
 import org.junit.Test;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 
-import static com.github.cartagena.intercom.invite.Coordinates.newCoordinates;
 import static com.github.cartagena.intercom.invite.ApplicationConfiguration.newApplicationConfiguration;
-import static org.assertj.core.api.Assertions.*;
+import static com.github.cartagena.intercom.invite.geo.Coordinates.newCoordinates;
+import static org.assertj.core.api.Assertions.assertThat;
 
 public class CustomersApplicationTest {
 
@@ -23,7 +24,7 @@ public class CustomersApplicationTest {
 
         ApplicationConfiguration config = newApplicationConfiguration()
                 .customersFile("src/test/resources/customers.json")
-                .minDistance(50D)
+                .maxDistance(50D)
                 .officeLocation(officeLocation)
                 .build();
 
@@ -32,9 +33,12 @@ public class CustomersApplicationTest {
         app.searchAndPrintNearbyCustomers();
 
         String output = baos.toString();
+
+        System.out.print(output);
+
         assertThat(output)
                 .contains(
-                        "Wicklow 1",
+                        "Wicklow 1\n" +
                         "Kildare 5");
 
     }
