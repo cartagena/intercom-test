@@ -4,7 +4,7 @@ import com.github.cartagena.intercom.invite.geo.Coordinates;
 import lombok.Builder;
 import lombok.Value;
 
-import static com.github.cartagena.intercom.invite.geo.Coordinates.newCoordinates;
+import static com.github.cartagena.intercom.invite.geo.Coordinates.*;
 
 @Value
 @Builder(builderMethodName = "newCustomer")

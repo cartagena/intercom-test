@@ -10,8 +10,8 @@ import java.io.PrintStream;
 import java.nio.file.Paths;
 import java.util.Properties;
 
-import static com.github.cartagena.intercom.invite.ApplicationConfiguration.newApplicationConfiguration;
-import static com.github.cartagena.intercom.invite.geo.Coordinates.newCoordinates;
+import static com.github.cartagena.intercom.invite.ApplicationConfiguration.*;
+import static com.github.cartagena.intercom.invite.geo.Coordinates.*;
 
 public class CustomersApplication {
 
