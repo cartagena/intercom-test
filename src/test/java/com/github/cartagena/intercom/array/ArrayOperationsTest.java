@@ -1,4 +1,4 @@
-package com.github.cartagena.intercom;
+package com.github.cartagena.intercom.array;
 
 import org.junit.Test;
 
